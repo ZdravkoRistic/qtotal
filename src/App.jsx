@@ -590,7 +590,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState(null); // 'success' | 'error'
-    const FORMSPREE_ENDPOINT ="https://formspree.io/f/movbyldk";
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/movbyldk";
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
@@ -599,35 +599,34 @@ const Contact = () => {
   //   e.preventDefault();
   //   setIsSubmitting(true);
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  try {
-    const res = await fetch(FORMSPREE_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formState),
-    });
-    setFeedback(res.ok ? "success" : "error");
-    if (res.ok) setFormState({ name: "", email: "", phone: "", message: "" });
-  } catch {
-    setFeedback("error");
-  } finally {
-    setIsSubmitting(false);
-    setTimeout(() => setFeedback(null), 5000);
-  }
-};
-
-
-    // Simulacija slanja (u produkciji ovde ide API poziv ka Netlify/Next.js API)
-    setTimeout(() => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+      setFeedback(res.ok ? "success" : "error");
+      if (res.ok) setFormState({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      setFeedback("error");
+    } finally {
       setIsSubmitting(false);
-      setFeedback("success");
-      setFormState({ name: "", email: "", phone: "", message: "" });
-
-      // Reset feedback message after 5 seconds
       setTimeout(() => setFeedback(null), 5000);
-    }, 1500);
+    }
   };
+
+  // Simulacija slanja (u produkciji ovde ide API poziv ka Netlify/Next.js API)
+  // setTimeout(() => {
+  //   setIsSubmitting(false);
+  //   setFeedback("success");
+  //   setFormState({ name: "", email: "", phone: "", message: "" });
+
+  // Reset feedback message after 5 seconds
+  //     setTimeout(() => setFeedback(null), 5000);
+  //   }, 1500);
+  // };
 
   return (
     <div className="pt-24 pb-16 min-h-screen bg-slate-950 animate-fade-in relative overflow-hidden">
