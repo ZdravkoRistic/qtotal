@@ -590,14 +590,33 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState(null); // 'success' | 'error'
-
+    const FORMSPREE_ENDPOINT ="https://formspree.io/f/movbyldk";
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formState),
+    });
+    setFeedback(res.ok ? "success" : "error");
+    if (res.ok) setFormState({ name: "", email: "", phone: "", message: "" });
+  } catch {
+    setFeedback("error");
+  } finally {
+    setIsSubmitting(false);
+    setTimeout(() => setFeedback(null), 5000);
+  }
+};
+
 
     // Simulacija slanja (u produkciji ovde ide API poziv ka Netlify/Next.js API)
     setTimeout(() => {
