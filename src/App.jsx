@@ -579,7 +579,7 @@ const Trainings = ({ setActiveTab }) => {
     </div>
   );
 };
-
+//
 // Stranica: KONTAKT
 const Contact = () => {
   const [formState, setFormState] = useState({
