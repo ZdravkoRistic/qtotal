@@ -271,7 +271,7 @@ const Home = ({ setActiveTab }) => {
             </button>
             <button
               onClick={() => setActiveTab("contact")}
-              className="px-8 py-4 rounded-lg bg-slate-800 text-white font-semibold text-lg border border-slate-700 hover:bg-slate-700 transition-all hover:scale-105"
+              className="px-8 py-4 rounded-lg bg-gray-800 text-white font-semibold text-lg border border-slate-700 hover:bg-slate-700 transition-all hover:scale-105"
             >
               Kontaktiraj nas
             </button>
