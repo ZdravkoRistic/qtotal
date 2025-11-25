@@ -98,8 +98,8 @@ const Navigation = ({ activeTab, setActiveTab }) => {
               onClick={() => setActiveTab(link.id)}
               className={`text-sm font-medium transition-colors duration-300 hover:text-orange-400 uppercase tracking-widest ${
                 activeTab === link.id
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-500"
-                  : "text-slate-300"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-500 border border-white px-3 py-1 rounded-md"
+                  : "text-white "
               }`}
             >
               {link.label}
@@ -257,7 +257,7 @@ const Home = ({ setActiveTab }) => {
             </span>
           </h1>
 
-          <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className=" text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
             Kontinuirano unapređujemo poslovne performanse kroz inovativna
             rešenja, ISO standardizaciju i ekspertske obuke.
           </p>
@@ -270,12 +270,15 @@ const Home = ({ setActiveTab }) => {
               Saznaj više <ArrowRight className="ml-2 w-5 h-5" />
             </button>
             <button
-              onClick={() => setActiveTab("contact")}
-              className="px-8 py-4 rounded-lg bg-gray-800 text-white font-semibold text-lg border border-slate-700 hover:bg-slate-700 transition-all hover:scale-105"
+              onClick={() => {
+                setActiveTab("contact");
+              }}
+              className="px-8 py-4 rounded-lg bg-slate-800  font-semibold text-lg border border-slate-700 hover:bg-slate-700 transition-all hover:scale-105 "
             >
               Kontaktiraj nas
             </button>
           </div>
+          <div className="hidden text-black text-white"></div>
         </div>
       </section>
 
