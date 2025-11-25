@@ -620,17 +620,6 @@ const Contact = () => {
     }
   };
 
-  // Simulacija slanja (u produkciji ovde ide API poziv ka Netlify/Next.js API)
-  // setTimeout(() => {
-  //   setIsSubmitting(false);
-  //   setFeedback("success");
-  //   setFormState({ name: "", email: "", phone: "", message: "" });
-
-  // Reset feedback message after 5 seconds
-  //     setTimeout(() => setFeedback(null), 5000);
-  //   }, 1500);
-  // };
-
   return (
     <div className="pt-24 pb-16 min-h-screen bg-slate-950 animate-fade-in relative overflow-hidden">
       {/* Background decorations */}
