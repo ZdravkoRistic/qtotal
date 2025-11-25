@@ -62,16 +62,17 @@ button:focus-visible {
   }
   button {
     background-color: #1a1a1a;
-    /* color: #fff; */
     border: 1px solid transparent;
     transition: border-color 0.3s, color 0.3s;
+    /* color: #fff; */
   }
   button:hover {
-    color: #ea580c;
+    /* color: #ea580c; */
     border: 1px solid #8da9ff;
     background-color: #1a1a1a;
   }
   nav button.active {
+    border: 1px solid #8da9ff;
     background-color: transparent;
     color: transparent;
     background-clip: text;
@@ -94,19 +95,20 @@ button:focus-visible {
 
   /* Globalna dugmad (van navigacije) */
   body > button {
-    background-color: #eaeaea;
+    background-color: #1a1a1a;
     color: #213547; /* crna slova */
     border: 1px solid #213547;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  body > button:hover {
+  button:hover {
     background-color: #1a1a1a;
-    color: #ea580c;
     border-color: #646cff;
+    transition: border-color 0.3s, color 0.3s;
+    /* color: #ea580c; */
   }
 
-  /* Navigacija – aktivni tab */
+  /* Navigacija – aktivni tab na kojem se nalazi postoje stranica */
   nav button.active {
     color: transparent;
     background-clip: text;

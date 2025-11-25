@@ -545,13 +545,13 @@ const Trainings = ({ setActiveTab }) => {
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       onClick={() => setActiveTab("contact")}
-                      className="py-3 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-medium text-sm transition-colors text-center"
+                      className="py-3 rounded-lg bg-gray-800 text-white font-medium text-sm transition-colors text-center"
                     >
                       Rezerviši obuku
                     </button>
                     <button
                       onClick={() => setActiveTab("contact")}
-                      className="py-3 rounded-lg border border-slate-600 hover:border-slate-400 text-white font-medium text-sm transition-colors text-center"
+                      className="py-3 rounded-lg border border-slate-600 hover:border-slate-400 text-white font-medium text-sm transition-colors text-center bg-gray-800"
                     >
                       Zatraži detalje
                     </button>
