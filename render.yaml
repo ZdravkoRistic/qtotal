@@ -3,6 +3,7 @@ services:
     name: qtotal-backend
     env: node
     rootDir: backend
+    plan: free
     buildCommand: npm install
     startCommand: node server.js
     envVars:
