@@ -1,6 +1,7 @@
 const https = require('https');
 
-const API_KEY = 'AIzaSyCyypD_5NjoTXnXseYfXB3d5yah7NArc08';
+require('dotenv').config();
+const API_KEY = process.env.GEMINI_API_KEY;
 const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`;
 
 console.log('🔍 Listing available models via REST API...');
