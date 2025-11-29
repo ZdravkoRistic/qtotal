@@ -2,7 +2,7 @@ services:
   - type: web
     name: qtotal-backend
     env: node
-    root: backend
+    rootDir: backend
     buildCommand: npm install
     startCommand: node server.js
     envVars:
