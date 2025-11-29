@@ -24,6 +24,7 @@ dist-ssr
 *.sw?
 
 # Backend secrets
+.env
 backend/.env
 backend/credentials.json
 backend/token.json

@@ -590,7 +590,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState(null); // 'success' | 'error'
-  const FORMSPREE_ENDPOINT = "http://localhost:5000/api/contact";
+  const FORMSPREE_ENDPOINT = import.meta.env.VITE_API_URL || "http://localhost:5000/api/contact";
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
