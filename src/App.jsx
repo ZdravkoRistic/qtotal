@@ -72,11 +72,10 @@ const Navigation = ({ activeTab, setActiveTab }) => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-slate-950/90 backdrop-blur-md border-b border-slate-800 py-4"
-          : "bg-transparent py-6"
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled
+        ? "bg-slate-950/90 backdrop-blur-md border-b border-slate-800 py-4"
+        : "bg-transparent py-6"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo + Ime */}
@@ -96,11 +95,10 @@ const Navigation = ({ activeTab, setActiveTab }) => {
             <button
               key={link.id}
               onClick={() => setActiveTab(link.id)}
-              className={`text-sm font-medium transition-colors duration-300 hover:text-orange-400 uppercase tracking-widest ${
-                activeTab === link.id
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-500 border border-white px-3 py-1 rounded-md"
-                  : "text-white "
-              }`}
+              className={`text-sm font-medium transition-colors duration-300 hover:text-orange-400 uppercase tracking-widest ${activeTab === link.id
+                ? "text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-500 border border-white px-3 py-1 rounded-md"
+                : "text-white "
+                }`}
             >
               {link.label}
             </button>
@@ -128,11 +126,10 @@ const Navigation = ({ activeTab, setActiveTab }) => {
                 setActiveTab(link.id);
                 setIsMenuOpen(false);
               }}
-              className={`text-left py-3 px-4 rounded-lg text-lg font-medium ${
-                activeTab === link.id
-                  ? "bg-slate-800 text-orange-400"
-                  : "text-slate-300 hover:bg-slate-900"
-              }`}
+              className={`text-left py-3 px-4 rounded-lg text-lg font-medium ${activeTab === link.id
+                ? "bg-slate-800 text-orange-400"
+                : "text-slate-300 hover:bg-slate-900"
+                }`}
             >
               {link.label}
             </button>
@@ -593,7 +590,8 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState(null); // 'success' | 'error'
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/movbyldk";
+  const FORMSPREE_ENDPOINT = "http://localhost:5000/api/contact";
+
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
@@ -603,20 +601,36 @@ const Contact = () => {
   //   setIsSubmitting(true);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('🔵 FORM SUBMIT STARTED');
+    console.log('📝 Form State:', formState);
+    console.log('🌐 Sending to:', FORMSPREE_ENDPOINT);
+
     setIsSubmitting(true);
     try {
+      console.log('⏳ Sending fetch request...');
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
       });
+
+      console.log('✅ Response received:', res.status, res.statusText);
+      console.log('📊 Response OK?', res.ok);
+
       setFeedback(res.ok ? "success" : "error");
-      if (res.ok) setFormState({ name: "", email: "", phone: "", message: "" });
-    } catch {
+      if (res.ok) {
+        console.log('✅ Form submitted successfully! Clearing form...');
+        setFormState({ name: "", email: "", phone: "", message: "" });
+      } else {
+        console.log('❌ Response not OK');
+      }
+    } catch (error) {
+      console.error('❌ FETCH ERROR:', error);
       setFeedback("error");
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setFeedback(null), 5000);
+      console.log('🔵 FORM SUBMIT COMPLETED');
     }
   };
 
@@ -818,11 +832,10 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full py-4 rounded-lg font-bold text-white shadow-lg transition-all transform hover:scale-[1.02] active:scale-95 ${
-                  isSubmitting
-                    ? "bg-slate-700 cursor-not-allowed"
-                    : "bg-gradient-to-r from-orange-600 to-purple-700 hover:shadow-purple-500/25"
-                }`}
+                className={`w-full py-4 rounded-lg font-bold text-white shadow-lg transition-all transform hover:scale-[1.02] active:scale-95 ${isSubmitting
+                  ? "bg-slate-700 cursor-not-allowed"
+                  : "bg-gradient-to-r from-orange-600 to-purple-700 hover:shadow-purple-500/25"
+                  }`}
               >
                 {isSubmitting ? "Slanje..." : "Pošalji Poruku"}
               </button>
